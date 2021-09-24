@@ -27,7 +27,6 @@ public class CarController {
     private RestResponse<?> carSave(CarDto carDto) throws Exception {
         try {
             log.info("Машина успешно сохранена!");
-            carService.save(carDto);
             return RestResponse.of(HttpStatus.OK, carService.save(carDto), Map.of("1", "Машина успешно сохранена"));
         } catch (ArrayStoreException e) {
             return RestResponse.of(HttpStatus.BAD_REQUEST, null, Map.of("1", "Все места заняты"));
@@ -40,8 +39,7 @@ public class CarController {
     @GetMapping("/carFound")
     private RestResponse<?> carFound() throws Exception {
         try {
-            List<CarDto> carDtos = carService.findAll();
-            return RestResponse.of(HttpStatus.OK, carDtos, Map.of("1", "Success"));
+            return RestResponse.of(HttpStatus.OK, carService.findAll(), Map.of("1", "Success"));
         } catch (Exception e) {
             return RestResponse.of(HttpStatus.BAD_REQUEST, null, Map.of("1", e.getMessage()));
         }

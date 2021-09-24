@@ -2,8 +2,12 @@ package kg.alessand.task.parkingHistory;
 
 import lombok.Data;
 
+import java.time.LocalDateTime;
+
 @Data
 public class ParkingHistoryDto {
 
-    Long carId;
+    private Long id;
+    private Long carId;
+    private LocalDateTime endDate;
 }

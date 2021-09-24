@@ -1,16 +1,19 @@
 package kg.alessand.task.parking;
 
-import net.bytebuddy.implementation.bind.annotation.RuntimeType;
+import kg.alessand.task.car.Car;
 
 import java.util.List;
 
 public interface ParkingService {
 
 
-    String createPark();
+    String createPark() throws Exception;
 
-    List<ParkingDto> findAllFreePlace();
+    List<ParkingDto> findAllFreePlace() throws Exception;
 
-    int findReservedPlaceCount();
+    int findReservedPlaceCount() throws Exception;
+
+    ParkingDto switchTrueOnFalse(Car car);
+
 
 }

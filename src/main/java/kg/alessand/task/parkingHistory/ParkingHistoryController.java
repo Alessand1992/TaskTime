@@ -6,10 +6,7 @@ import kg.alessand.task.RestResponse;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -26,9 +23,8 @@ public class ParkingHistoryController {
 
     @ApiOperation(value = "Машина покидает парковку", notes = "Машина покидает парковку")
     @GetMapping("/saveParkingHistory")
-    private RestResponse<?> saveParkingHistory(ParkingHistoryDto parkingHistoryDto,Long id) throws Exception {
+    private RestResponse<?> saveParkingHistory(@RequestParam ParkingHistoryDto parkingHistoryDto, Long id) throws Exception {
         try{
-            parkingHistoryService.save(parkingHistoryDto,id);
             return RestResponse.of(HttpStatus.OK,parkingHistoryService.save(parkingHistoryDto,id), Map.of("1","SUCCESS"));
         }catch (Exception e){
             return RestResponse.of(HttpStatus.OK,null,Map.of("1",e.getMessage()));
