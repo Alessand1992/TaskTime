@@ -15,8 +15,6 @@ public class ParkingHistoryBuilder {
     private final Long id;
     private final Long carId;
     private final LocalDateTime endDate;
-    private final String sortType;
-    private final String sortProperty;
 
     public static ParkingHistoryBuilderBuilder getParam(ParkingHistoryDto parkingHistoryDto){
 
